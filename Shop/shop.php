@@ -5,11 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Shop</title>
-    <style>
-
-    </style>
+    <title>Sugar Shop</title>
 </head>
+
 
 <body>
     <div class="half">
@@ -69,7 +67,6 @@
 
 
     <div class="otherHalf">
-
         <div class="back-button">
             <a href="../index.php">Back</a>
         </div>
@@ -80,13 +77,13 @@ $sql = "SELECT * FROM checkout";
 $result = mysqli_query($con, $sql);
 
 if (mysqli_num_rows($result) > 0) {
-    // Initialize arrays
+    
     $cartItems = [];
 
     $totalPrice = 0;
 
     while ($row = mysqli_fetch_assoc($result)) {
-        // Extract user details
+       
         $product = [
             'pName' => mysqli_real_escape_string($con, $row['pro_name']),
             'quantity' => intval($row['pro_quantity']),
@@ -96,7 +93,7 @@ if (mysqli_num_rows($result) > 0) {
 
         $cartItems[] = $product;
 
-        // Calculate total price
+        
         $totalPrice += $row['pro_quantity'] * $row['pro_price'];
     }
 
@@ -110,9 +107,18 @@ if (mysqli_num_rows($result) > 0) {
     foreach ($cartItems as $item) {
         $productName = $item['pName'];
         $productQuantity = $item['quantity'];
-        $productPice = $item['productPrice'];
+        $productPrice = $item['productPrice'];
 
-        echo '<li>' . $productName . ' x ' . $productQuantity . ' = '.$productPice * $productQuantity. ' </li>';
+        echo '<li><table><tr>';
+echo '<td>' . $productName . '</td>';
+echo '<td>*</td> ';
+
+echo '<td>' . $productQuantity . ' </td>';
+echo '<td> = </td> ';
+
+echo '<td> ' . $productPrice * $productQuantity . '</td>';
+echo '</tr></table></li>';
+
     }
 
     echo '</ul>
@@ -136,7 +142,7 @@ mysqli_close($con);
 
     </div>
 
-    <script src="script.js"></script>
+    <script src="scriptt.js"></script>
 </body>
 
 </html>

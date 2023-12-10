@@ -42,8 +42,43 @@ function updateCart() {
 
         // Display each item in the cart
         const li = document.createElement('li');
-        li.textContent = `${product.name} x ${item.quantity} = ${product.price * item.quantity.toFixed(2)}`;
+        const table = document.createElement('table');
+        const tr = document.createElement('tr');
+
+        // Create and append the first cell (product name)
+        const td1 = document.createElement('td');
+        td1.textContent = product.name;
+        tr.appendChild(td1);
+
+        // Create and append the second cell (multiplication symbol)
+        const td2 = document.createElement('td');
+        td2.textContent = '*';
+        tr.appendChild(td2);
+
+        // Create and append the third cell (product quantity)
+        const td3 = document.createElement('td');
+        td3.textContent = item.quantity;
+        tr.appendChild(td3);
+
+        // Create and append the fourth cell (equal symbol)
+        const td4 = document.createElement('td');
+        td4.textContent = '=';
+        tr.appendChild(td4);
+
+        // Create and append the fifth cell (product price * quantity)
+        const td5 = document.createElement('td');
+        td5.textContent = (product.price * item.quantity).toFixed(2);
+        tr.appendChild(td5);
+
+        // Append the row to the table
+        table.appendChild(tr);
+
+        // Append the table to the list item
+        li.appendChild(table);
+
+        // Append the list item to the cart items element
         cartItemsElement.appendChild(li);
+
 
         // Calculate the total cost
         totalCost += product.price * item.quantity;

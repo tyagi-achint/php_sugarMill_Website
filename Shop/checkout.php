@@ -6,42 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-    form {
-        text-align: center;
-    }
 
-    form h2 {
-        text-align: left;
-    }
-
-    input {
-        width: 80%;
-    }
-    </style>
 </head>
 
 <body>
-    <div class="container">
-        <div class="half ">
-            <form method='post' action='thankyou.php'>
-                <h2>Fill the details</h2>
-                <input type="text" id="fullName" name="fullName" placeholder="Full Name" required>
-                <input type="number" id="contact" name="contact" placeholder="Contact" required>
-                <input type="text" id="address" name="address" placeholder="Address" required>
-                <input type="text" id="state" name="state" placeholder="State" required>
-                <input type="text" id="country" name="country" placeholder="Country" required>
-                <input type="number" id="zipCode" name="zipCode" placeholder="ZipCode" required>
-            </form>
-        </div>
-        <div class="otherHalf">
-            <div class="back-button">
-                <a href="shop.php">Back</a>
-            </div>
 
-            <div id="cart">
-                <h2>Shopping Cart</h2>
-                <?php
+    <div class="half">
+        <form method='post' action='thankyou.php'>
+            <h2>Fill the details</h2>
+            <input type="text" id="fullName" name="fullName" placeholder="Full Name" required>
+            <input type="number" id="contact" name="contact" placeholder="Contact" required>
+            <input type="text" id="address" name="address" placeholder="Address" required>
+            <input type="text" id="state" name="state" placeholder="State" required>
+            <input type="text" id="country" name="country" placeholder="Country" required>
+            <input type="number" id="zipCode" name="zipCode" placeholder="ZipCode" required>
+        </form>
+    </div>
+
+    <div class="otherHalf">
+        <div class="back-button">
+            <a href="shop.php">Back</a>
+        </div>
+
+        <div id="cart">
+            <h2>Shopping Cart</h2>
+            <?php
 include '../server.php';
 
 $sql = "SELECT * FROM checkout";
@@ -73,7 +62,16 @@ if ($result && mysqli_num_rows($result) > 0) {
         $productPrice = $prices[$i];
         $productQuantity = $quantities[$i];
 
-        echo '<li>' . $productName . ' x ' . $productQuantity . ' = ' . ($productQuantity * $productPrice) . '</li>';
+       
+        echo '<li><table><tr>';
+        echo '<td>' . $productName . '</td>';
+        echo '<td>*</td> ';
+        
+        echo '<td>' . $productQuantity . ' </td>';
+        echo '<td> = </td> ';
+        
+        echo '<td> ' . $productPrice * $productQuantity . '</td>';
+        echo '</tr></table></li>';
     }
 
     echo '</ul>';
@@ -83,20 +81,19 @@ if ($result && mysqli_num_rows($result) > 0) {
 } else {
 
     echo "<h3>Cart is Empty</h3>";
-
     echo '<p>Total: <span id="total">0.00</span></p>';
 
 }
 
 mysqli_close($con);
 ?>
-                <button onclick="finalCheckout()">Buy</button>
-            </div>
-
-
+            <button onclick="finalCheckout()">Buy</button>
         </div>
 
+
     </div>
+
+
 
     <script>
     function finalCheckout() {
