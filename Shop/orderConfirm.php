@@ -28,7 +28,7 @@ if ($result) {
                 }
             
                 setTimeout(function(){
-                    window.location.href = 'shop.php';
+                    window.location.href = 'shopIndex.php';
                 }, 5000); 
             </script>";
     } else {

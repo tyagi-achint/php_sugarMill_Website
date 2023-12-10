@@ -120,7 +120,7 @@ function checkout() {
         form.id = 'checkoutForm';
         form.style.display = 'none';
         form.method = 'post';
-        form.action = 'cartPage.php';
+        form.action = 'cartToDatabase.php';
 
         // Loop through the cart items and add input fields for each item
         cartItems.forEach(item => {

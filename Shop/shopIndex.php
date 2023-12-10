@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="shopStyle.css">
     <title>Sugar Shop</title>
 </head>
 
@@ -142,7 +142,7 @@ mysqli_close($con);
 
     </div>
 
-    <script src="scriptt.js"></script>
+    <script src="shopScript.js"></script>
 </body>
 
 </html>

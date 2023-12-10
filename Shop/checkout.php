@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="shopStyle.css">
 
 </head>
 
 <body>
 
     <div class="half">
-        <form method='post' action='thankyou.php'>
+        <form id="checkoutForm" method='post' action='orderConfirm.php'>
             <h2>Fill the details</h2>
             <input type="text" id="fullName" name="fullName" placeholder="Full Name" required>
             <input type="number" id="contact" name="contact" placeholder="Contact" required>
@@ -25,7 +25,7 @@
 
     <div class="otherHalf">
         <div class="back-button">
-            <a href="shop.php">Back</a>
+            <a href="shopIndex.php">Back</a>
         </div>
 
         <div id="cart">
