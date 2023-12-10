@@ -5,8 +5,10 @@ function addToCart(productName, productPrice) {
 
     let quantity = parseInt(quantityInput.value);
     let pName = capFrstLtr(productName + " sugar");
-    if (isNaN(quantity) || quantity <= 0) {
-        quantity = 0;
+
+    if (isNaN(quantity) || quantity < 1 || quantity > 20) {
+        alert('Please enter a valid quantity between 1 and 20.');
+        return;
     }
 
     // Check if the item is already in the cart
@@ -20,14 +22,12 @@ function addToCart(productName, productPrice) {
     } else {
         // If the item is not in the cart, add it to the client-side cart
         cartItems.push({ pName, quantity, productPrice });
-        console.log(cartItems);
+
     }
 
     // Update the cart display
     updateCart();
 }
-
-// Function to update the cart display and calculate the total cost
 function updateCart() {
     const cartItemsElement = document.getElementById('cart-items');
     const totalElement = document.getElementById('total');
@@ -57,7 +57,11 @@ function updateCart() {
 
         // Create and append the third cell (product quantity)
         const td3 = document.createElement('td');
-        td3.textContent = item.quantity;
+
+        // Limit displayed quantity to 20
+        const displayedQuantity = Math.min(item.quantity, 20);
+        td3.textContent = displayedQuantity;
+
         tr.appendChild(td3);
 
         // Create and append the fourth cell (equal symbol)
@@ -67,7 +71,7 @@ function updateCart() {
 
         // Create and append the fifth cell (product price * quantity)
         const td5 = document.createElement('td');
-        td5.textContent = (product.price * item.quantity).toFixed(2);
+        td5.textContent = (product.price * displayedQuantity).toFixed(2);
         tr.appendChild(td5);
 
         // Append the row to the table
@@ -79,9 +83,8 @@ function updateCart() {
         // Append the list item to the cart items element
         cartItemsElement.appendChild(li);
 
-
         // Calculate the total cost
-        totalCost += product.price * item.quantity;
+        totalCost += product.price * displayedQuantity;
     });
 
     // Update the total cost display

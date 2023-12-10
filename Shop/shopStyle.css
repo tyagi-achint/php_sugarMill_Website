@@ -1,3 +1,4 @@
+
 body {
     background-color: #f3f8ff;
     margin: 0;
@@ -11,19 +12,40 @@ img {
     width: 150px;
 }
 
+.mainDiv{
+    display: flex;
+}
+
+.half{
+    flex:70vw;
+
+}
+.other-half{
+    flex:30vw;
+}
+
 #cart {
     text-align: center;
     width: auto !important;
-}
-
-.product,
-#cart {
-    width: 40%;
     margin: 20px 30px;
     border-radius: 10px;
     border: 3px solid #5a5959;
     background-color: #7d7c7c99;
     padding: 10px;
+}
+
+.product{
+    width: 30vw;
+    margin: 20px 30px;
+    border-radius: 10px;
+    border: 3px solid #5a5959;
+    background-color: #7d7c7c99;
+    padding: 10px;
+}
+
+
+.product input:nth-child(2){
+    width: 40%;
 }
 
 input::-webkit-outer-spin-button,
@@ -36,6 +58,7 @@ input::-webkit-inner-spin-button {
 
 
 input {
+  
     color: #312929;
     background-color: transparent;
     text-align: center;
@@ -64,14 +87,15 @@ input.qtyminus {
 
 button {
     width: 70%;
-    padding: 10px;
+    padding: 7px;
     color: white;
     background-color: #5a5959;
     border: 3px solid #5a5959;
     border-radius: 4px;
     cursor: pointer;
-    font-size: medium;
+    font-size: 75%;
     font-weight: bolder;
+    overflow: hidden;
 }
 
 button:hover {
@@ -89,9 +113,7 @@ button:hover {
     transform: scale(1.05);
 }
 
-.half {
-    width: 70%;
-}
+
 
 h2 {
 
@@ -110,13 +132,10 @@ p {
     background-color: #fff0f5cc;
 }
 
-.otherHalf {
-    width: 27%;
-}
 
 .back-button {
     text-align: center;
-    margin: 50px auto;
+    margin: 10px auto;
     width: 100%;
 }
 
@@ -148,12 +167,12 @@ ul {
 
 
 table {
-    width: 100%;
+    width: 16vw;
+    margin: auto;
 }
-
 td:first-child {
     text-align: left;
-    width: 50%;
+   
 }
 
 td:last-child {
@@ -165,7 +184,7 @@ td:last-child {
 }
 
 #checkoutForm{
-    margin: 50px 30px;
+    margin: 20px 30px;
     border-radius: 10px;
     border: 3px solid #5a5959;
     background-color: #7d7c7c4d;
@@ -180,4 +199,20 @@ td:last-child {
 
 #checkoutForm input:nth-child(4){
     width: 90%;
+}
+
+
+@media only screen and (max-width: 900px) {
+    .row{
+        display: block;
+    }
+    .product{
+        width: 65vw;
+        margin: 20px auto;
+    }
+    input {
+        width: -webkit-fill-available;}
+        .mainDiv{
+            display: block;
+        }
 }

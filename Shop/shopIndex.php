@@ -10,67 +10,69 @@
 
 
 <body>
-    <div class="half">
-        <div class="row">
-            <div class="product">
-                <img src="organic.png" alt="Organic Sugar">
-                <h2>Organic Sugar</h2>
-                <p>Price: 100/kg</p>
-                <form class='qnty'>
-                    <input type='button' value='-' class='qtyminus minus' field='qnty' />
-                    <input placeholder="Quantity" type="number" id="organic" min="1" name='qnty' class='qty' />
-                    <input type='button' value='+' class='qtyplus plus' field='qnty' />
-                </form>
-                <button onclick="addToCart('organic',100)">Add to Cart</button>
+    <div class="mainDiv">
+
+
+        <div class="half">
+            <div class="row">
+                <div class="product">
+                    <img src="organic.png" alt="Organic Sugar">
+                    <h2>Organic Sugar</h2>
+                    <p>Price: 100/kg</p>
+                    <form class='qnty'>
+                        <input type='button' value='-' class='qtyminus minus' field='qnty' />
+                        <input placeholder="Quantity" type="number" id="organic" min="1" name='qnty' class='qty' />
+                        <input type='button' value='+' class='qtyplus plus' field='qnty' />
+                    </form>
+                    <button onclick="addToCart('organic',100)">Add to Cart</button>
+                </div>
+
+                <div class="product">
+                    <img src="brown.png" alt="Brown Sugar">
+                    <h2>Brown Sugar</h2>
+                    <p>Price: 75/kg</p>
+                    <form class='qnty'>
+                        <input type='button' value='-' class='qtyminus minus' field='qnty' />
+                        <input placeholder="Quantity" type="number" id="brown" min="1" name='qnty' class='qty' />
+                        <input type='button' value='+' class='qtyplus plus' field='qnty' />
+                    </form>
+                    <button onclick="addToCart('brown',75)">Add to Cart</button>
+                </div>
             </div>
 
-            <div class="product">
-                <img src="brown.png" alt="Brown Sugar">
-                <h2>Brown Sugar</h2>
-                <p>Price: 75/kg</p>
-                <form class='qnty'>
-                    <input type='button' value='-' class='qtyminus minus' field='qnty' />
-                    <input placeholder="Quantity" type="number" id="brown" min="1" name='qnty' class='qty' />
-                    <input type='button' value='+' class='qtyplus plus' field='qnty' />
-                </form>
-                <button onclick="addToCart('brown',75)">Add to Cart</button>
+            <div class="row">
+                <div class="product">
+                    <img src="white.png" alt="White Sugar">
+                    <h2>White Sugar</h2>
+                    <p>Price: 50/kg</p>
+                    <form class='qnty'>
+                        <input type='button' value='-' class='qtyminus minus' field='qnty' />
+                        <input placeholder="Quantity" type="number" id="white" min="1" max="20" name='qnty'
+                            class='qty' />
+                        <input type='button' value='+' class='qtyplus plus' field='qnty' />
+                    </form>
+                    <button onclick="addToCart('white',50)">Add to Cart</button>
+                </div>
+
+                <div class="product">
+                    <img src="liquid.png" alt="Liquid Sugar">
+                    <h2>Liquid Sugar</h2>
+                    <p>Price: 45/kg</p>
+                    <form class='qnty'>
+                        <input type='button' value='-' class='qtyminus minus' field='qnty' />
+                        <input placeholder="Quantity" type="number" id="liquid" min="1" name='qnty' class='qty' />
+                        <input type='button' value='+' class='qtyplus plus' field='qnty' />
+                    </form>
+                    <button onclick="addToCart('liquid',45)">Add to Cart</button>
+                </div>
             </div>
         </div>
 
-        <div class="row">
-            <div class="product">
-                <img src="white.png" alt="White Sugar">
-                <h2>White Sugar</h2>
-                <p>Price: 50/kg</p>
-                <form class='qnty'>
-                    <input type='button' value='-' class='qtyminus minus' field='qnty' />
-                    <input placeholder="Quantity" type="number" id="white" min="1" name='qnty' class='qty' />
-                    <input type='button' value='+' class='qtyplus plus' field='qnty' />
-                </form>
-                <button onclick="addToCart('white',50)">Add to Cart</button>
-            </div>
-
-            <div class="product">
-                <img src="liquid.png" alt="Liquid Sugar">
-                <h2>Liquid Sugar</h2>
-                <p>Price: 45/kg</p>
-                <form class='qnty'>
-                    <input type='button' value='-' class='qtyminus minus' field='qnty' />
-                    <input placeholder="Quantity" type="number" id="liquid" min="1" name='qnty' class='qty' />
-                    <input type='button' value='+' class='qtyplus plus' field='qnty' />
-                </form>
-                <button onclick="addToCart('liquid',45)">Add to Cart</button>
-            </div>
-        </div>
-    </div>
 
 
+        <div class="other-half">
 
-    <div class="otherHalf">
-        <div class="back-button">
-            <a href="../index.php">Back</a>
-        </div>
-        <?php
+            <?php
 include '../server.php';
 
 $sql = "SELECT * FROM checkout";
@@ -138,6 +140,11 @@ echo '</tr></table></li>';
 mysqli_close($con);
 ?>
 
+            <div class="back-button">
+                <a href="../index.php">Back</a>
+            </div>
+
+        </div>
 
 
     </div>

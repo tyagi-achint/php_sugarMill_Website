@@ -10,34 +10,33 @@
 </head>
 
 <body>
+    <div class="mainDiv">
 
-    <div class="half">
-        <form id="checkoutForm" method='post' action='orderConfirm.php'>
-            <h2>Fill the details</h2>
-            <input type="text" id="fullName" name="fullName" placeholder="Full Name" required>
-            <input type="number" id="contact" name="contact" placeholder="Contact" required>
-            <input type="text" id="address" name="address" placeholder="Address" required>
-            <input type="text" id="state" name="state" placeholder="State" required>
-            <input type="text" id="country" name="country" placeholder="Country" required>
-            <input type="number" id="zipCode" name="zipCode" placeholder="ZipCode" required>
-        </form>
-    </div>
-
-    <div class="otherHalf">
-        <div class="back-button">
-            <a href="shopIndex.php">Back</a>
+        <div class="half">
+            <form id="checkoutForm" method='post' action='orderConfirm.php'>
+                <h2>Fill the details</h2>
+                <input type="text" id="fullName" name="fullName" placeholder="Full Name" required>
+                <input type="number" id="contact" name="contact" placeholder="Contact" required>
+                <input type="text" id="address" name="address" placeholder="Address" required>
+                <input type="text" id="state" name="state" placeholder="State" required>
+                <input type="text" id="country" name="country" placeholder="Country" required>
+                <input type="number" id="zipCode" name="zipCode" placeholder="ZipCode" required>
+            </form>
         </div>
 
-        <div id="cart">
-            <h2>Shopping Cart</h2>
-            <?php
+        <div class="other-half">
+
+
+            <div id="cart">
+                <h2>Shopping Cart</h2>
+                <?php
 include '../server.php';
 
 $sql = "SELECT * FROM checkout";
 $result = mysqli_query($con, $sql);
 
 if ($result && mysqli_num_rows($result) > 0) {
-    // Initialize arrays
+
     $names = [];
     $quantities = [];
     $prices = [];
@@ -87,12 +86,14 @@ if ($result && mysqli_num_rows($result) > 0) {
 
 mysqli_close($con);
 ?>
-            <button onclick="finalCheckout()">Buy</button>
+                <button onclick="finalCheckout()">Buy</button>
+            </div>
+
+            <div class="back-button">
+                <a href="shopIndex.php">Back</a>
+            </div>
         </div>
-
-
     </div>
-
 
 
     <script>
