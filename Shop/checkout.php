@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout</title>
     <link rel="stylesheet" href="shopStyle.css">
-
+    <?php include '../linkStyles.php';?>
 </head>
 
 <body>
@@ -95,35 +95,77 @@ mysqli_close($con);
         </div>
     </div>
 
+    <div id="CartalertDiv" style="display:none">
+        <?php
+            error_reporting(E_ERROR | E_PARSE);
+            $alertClass = 'CartfailureAlert';
+            $alertColor = '#ef2928';
+            $message = 'Please Add Something in Cart';
+            $redirectUrl = 'checkout.php';
+            echo "
+                <head>
+                    <link rel='stylesheet' href='../style.css'>
 
-    <script>
-    function finalCheckout() {
-        var total = document.getElementById("total");
-        if (total.innerHTML === "0.00") {
-            alert("Please Add Something in Cart...");
-        } else {
-            const inputElements = document.querySelectorAll('form input');
-
-            function checkForm() {
-                for (const input of inputElements) {
-                    if (input.type !== 'button' && input.value.trim() === '') {
-                        return false;
+                  
+                </head>
+                    <div id='$alertClass' class='alertDiv' style='background-color: $alertColor;'>
+                        <span id='{$alertClass}close' class='alertButton'><span class='material-symbols-outlined'>
+                            close
+                        </span></span>
+                        <p><b>$message</b></p>
+                    </div>
+                <script>
+                    let $alertClass = document.getElementById('$alertClass');
+                    let {$alertClass}close = document.getElementById('{$alertClass}close');
+                    {$alertClass}close.onclick = function () {
+                        $alertClass.style.display = 'none';
+                        window.location.href = '$redirectUrl';
                     }
-                }
+                   
+                </script>
+            ";
+            ?>
+        `;
 
-                return true;
-            }
-            if (checkForm()) {
-                const form = document.querySelector('form');
-                form.submit();
-            } else {
-                alert("Please Fill the form... ");
-            }
-        }
+    </div>
 
 
-    }
-    </script>
+    <div id="AddressalertDiv" style="display:none">
+        <?php
+            error_reporting(E_ERROR | E_PARSE);
+            $alertClass = 'AddressfailureAlert';
+            $alertColor = '#ef2928';
+            $message = 'Please fill the address field';
+            $redirectUrl = 'checkout.php';
+            echo "
+                <head>
+                    <link rel='stylesheet' href='../style.css'>
+
+                  
+                </head>
+                    <div id='$alertClass' class='alertDiv' style='background-color: $alertColor;'>
+                        <span id='{$alertClass}close' class='alertButton'><span class='material-symbols-outlined'>
+                            close
+                        </span></span>
+                        <p><b>$message</b></p>
+                    </div>
+                <script>
+                    let $alertClass = document.getElementById('$alertClass');
+                    let {$alertClass}close = document.getElementById('{$alertClass}close');
+                    {$alertClass}close.onclick = function () {
+                        $alertClass.style.display = 'none';
+                        window.location.href = '$redirectUrl';
+                    }
+                   
+                </script>
+            ";
+            ?>
+        `;
+
+    </div>
+
+
+    <script src="shopScript.js"></script>
 
 
 </body>

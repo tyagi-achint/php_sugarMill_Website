@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="shopStyle.css">
     <title>Sugar Shop</title>
-</head>
+    <?php include '../linkStyles.php';?>
 
+</head>
 
 <body>
     <div class="mainDiv">
@@ -146,6 +147,40 @@ mysqli_close($con);
 
         </div>
 
+
+    </div>
+
+    <div id="CartalertDiv" style="display:none">
+        <?php
+            error_reporting(E_ERROR | E_PARSE);
+            $alertClass = 'CartfailureAlert';
+            $alertColor = '#ef2928';
+            $message = 'Please Add Something in Cart';
+            $redirectUrl = 'shopIndex.php';
+            echo "
+                <head>
+                    <link rel='stylesheet' href='../style.css'>
+
+                  
+                </head>
+                    <div id='$alertClass' class='alertDiv' style='background-color: $alertColor;'>
+                        <span id='{$alertClass}close' class='alertButton'><span class='material-symbols-outlined'>
+                            close
+                        </span></span>
+                        <p><b>$message</b></p>
+                    </div>
+                <script>
+                    let $alertClass = document.getElementById('$alertClass');
+                    let {$alertClass}close = document.getElementById('{$alertClass}close');
+                    {$alertClass}close.onclick = function () {
+                        $alertClass.style.display = 'none';
+                        window.location.href = '$redirectUrl';
+                    }
+                   
+                </script>
+            ";
+            ?>
+        `;
 
     </div>
 

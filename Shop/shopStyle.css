@@ -5,6 +5,7 @@ body {
     padding: 0;
     justify-content: center;
     display: flex;
+    font-family: 'Acme', sans-serif;
 }
 
 img {
@@ -86,6 +87,8 @@ input.qtyminus {
 }
 
 button {
+    font-family: 'Preahvihear', sans-serif;
+    letter-spacing: 1px;
     width: 70%;
     padding: 7px;
     color: white;
@@ -116,7 +119,8 @@ button:hover {
 
 
 h2 {
-
+    font-family: 'Bree Serif', serif;
+    letter-spacing: 1px;
     text-decoration: underline;
     color: #ffffff;
     margin: 20px 0 15px
@@ -140,6 +144,8 @@ p {
 }
 
 .back-button a {
+    font-family: 'Preahvihear', sans-serif;
+    letter-spacing: 1px;
     border: 4px solid black;
     text-decoration: none;
     background-color: black;

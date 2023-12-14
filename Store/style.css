@@ -1,0 +1,64 @@
+/* #092635 */
+.login-container, .registration-container, .selling-container, .order-container, .buy-container,.profile-container, .update-container {
+  
+    background-color:  #f7f2e2db !important;
+    
+}
+
+ 
+.login-container h2,
+.registration-container h2,.selling-container h2,.order-container h2,.buy-container h2,.profile-info h1 {
+    color: #092635 !important;
+    border-bottom: 2px solid #092635 !important;
+}
+.login-form button:hover,
+.registration-form button:hover,.selling-container button:hover,.buy-container button:hover {
+    color: #092635 !important;
+    border: 3px solid #092635 !important;
+    background-color: transparent !important;
+}
+
+.profile-container a:hover, .update-container a:hover, .update-container input[type="submit"]:hover {
+    color: #fff !important;
+    background-color: #092635 !important;
+
+}
+.profile-container a, .update-container a, .update-container input[type="submit"] {
+  
+    color: #092635 !important;
+    
+    border: 3px solid #092635 !important;
+}
+
+.selling-container button:hover a, .order-container button:hover a, .buy-container button:hover a {
+    color: #092635 !important;
+}
+
+
+.login-form button,
+.registration-form button,.selling-container button,.order-container button ,.buy-container button {
+  
+    background-color: #092635 !important;
+    border: 3px solid #092635 !important;
+   
+}
+
+input{
+    
+    border:2px solid #092635 !important;
+}
+
+.login-container .signupLink, .registration-container .loginLink {
+   
+    color: #726145 !important;
+}
+
+.profile-container h1, .update-container h2 {
+    
+    color: #092635;
+}
+
+input::placeholder{
+    color: #092635;
+    
+}

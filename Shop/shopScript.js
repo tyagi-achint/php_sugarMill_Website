@@ -114,7 +114,14 @@ function getProductByName(productName) {
 function checkout() {
     // Check if the cart is empty
     if (cartItems.length === 0) {
-        alert('Please Add Items to your cart');
+        var CartalertDiv = document.getElementById('CartalertDiv');
+        CartalertDiv.style.display = "block";
+        if (CartalertDiv.style.display == 'block') {
+            setTimeout(function () {
+                window.location.href = 'shopIndex.php';
+            }, 2000);
+        }
+
     } else {
 
 
@@ -196,3 +203,50 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
+// Final Checkout Error Handler
+
+
+
+function finalCheckout() {
+    var total = document.getElementById("total");
+    if (total.innerHTML === "0.00") {
+
+        //Php file 
+
+        var CartalertDiv = document.getElementById('CartalertDiv');
+        CartalertDiv.style.display = "block";
+        if (CartalertDiv.style.display == 'block') {
+            setTimeout(function () {
+                window.location.href = 'checkout.php';
+            }, 2000);
+        }
+
+
+    } else {
+        const inputElements = document.querySelectorAll('form input');
+
+        function checkForm() {
+            for (const input of inputElements) {
+                if (input.type !== 'button' && input.value.trim() === '') {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+        if (checkForm()) {
+            const form = document.querySelector('form');
+            form.submit();
+        } else {
+            var AddressalertDiv = document.getElementById('AddressalertDiv');
+            AddressalertDiv.style.display = "block";
+            if (AddressalertDiv.style.display == 'block') {
+                setTimeout(function () {
+                    window.location.href = 'checkout.php';
+                }, 2000);
+            }
+        }
+    }
+
+
+}

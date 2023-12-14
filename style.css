@@ -1,0 +1,36 @@
+
+.alertDiv p {
+    margin: 10vh auto;
+}
+
+.alertDiv {
+border-radius: 10px;
+    position: fixed;
+    top: 35vh;
+    left: 35vw;
+    z-index: 2;
+    text-align: center;
+    width: 30vw;
+    height: 30vh;
+    border:2px solid black;
+}
+
+.alertButton {
+    position: absolute;
+    top: 5%;
+    right: 2%;
+    color: #2e2e2e;
+    float: right;
+    font-size: 30px;
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 900,
+  'GRAD' 0,
+  'opsz' 24
+}
