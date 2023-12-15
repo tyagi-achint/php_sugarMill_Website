@@ -17,6 +17,7 @@ function addToCart(productName, productPrice) {
     if (existingItem) {
         // If the item is already in the cart, update the quantity
         existingItem.quantity += quantity;
+        existingItem.quantity = Math.min(existingItem.quantity, 20);
 
 
     } else {
@@ -40,56 +41,42 @@ function updateCart() {
     cartItems.forEach(item => {
         const product = getProductByName(item.pName);
 
-        // Display each item in the cart
-        const li = document.createElement('li');
-        const table = document.createElement('table');
+
         const tr = document.createElement('tr');
 
-        // Create and append the first cell (product name)
         const td1 = document.createElement('td');
         td1.textContent = product.name;
         tr.appendChild(td1);
 
-        // Create and append the second cell (multiplication symbol)
         const td2 = document.createElement('td');
         td2.textContent = '*';
         tr.appendChild(td2);
 
-        // Create and append the third cell (product quantity)
+
         const td3 = document.createElement('td');
 
-        // Limit displayed quantity to 20
+
         const displayedQuantity = Math.min(item.quantity, 20);
         td3.textContent = displayedQuantity;
-
         tr.appendChild(td3);
 
-        // Create and append the fourth cell (equal symbol)
+
         const td4 = document.createElement('td');
         td4.textContent = '=';
         tr.appendChild(td4);
-
-        // Create and append the fifth cell (product price * quantity)
         const td5 = document.createElement('td');
-        td5.textContent = (product.price * displayedQuantity).toFixed(2);
+        td5.textContent = (product.price * displayedQuantity);
         tr.appendChild(td5);
-
-        // Append the row to the table
-        table.appendChild(tr);
-
-        // Append the table to the list item
-        li.appendChild(table);
-
-        // Append the list item to the cart items element
-        cartItemsElement.appendChild(li);
-
-        // Calculate the total cost
+        cartItemsElement.appendChild(tr);
         totalCost += product.price * displayedQuantity;
     });
 
-    // Update the total cost display
-    totalElement.textContent = totalCost.toFixed(2);
+
+    totalElement.textContent = totalCost;
+
 }
+
+
 
 
 // Helper function to get the input element id for a given product name
@@ -111,9 +98,11 @@ function getProductByName(productName) {
 }
 // Your JavaScript code
 
-function checkout() {
-    // Check if the cart is empty
-    if (cartItems.length === 0) {
+function checkout(value) {
+    var nextPage = value;
+    var total = document.getElementById("total");
+
+    if (cartItems.length === 0 || total.innerHTML === "0") {
         var CartalertDiv = document.getElementById('CartalertDiv');
         CartalertDiv.style.display = "block";
         if (CartalertDiv.style.display == 'block') {
@@ -131,6 +120,11 @@ function checkout() {
         form.style.display = 'none';
         form.method = 'post';
         form.action = 'cartToDatabase.php';
+        var loading = document.createElement('input');
+        loading.type = 'text';
+        loading.name = 'loading';
+        loading.value = nextPage;
+        form.appendChild(loading);
 
         // Loop through the cart items and add input fields for each item
         cartItems.forEach(item => {
@@ -147,7 +141,7 @@ function checkout() {
             var productPriceInput = document.createElement('input');
             productPriceInput.type = 'text';
             productPriceInput.name = 'pro_price[]';
-            productPriceInput.value = product.price.toFixed(2); // Use toFixed(2) to ensure two decimal places
+            productPriceInput.value = product.price;
             form.appendChild(productPriceInput);
 
 
@@ -209,9 +203,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function finalCheckout() {
     var total = document.getElementById("total");
-    if (total.innerHTML === "0.00") {
+    if (total.innerHTML === "0") {
 
-        //Php file 
+
 
         var CartalertDiv = document.getElementById('CartalertDiv');
         CartalertDiv.style.display = "block";
@@ -249,4 +243,8 @@ function finalCheckout() {
     }
 
 
+}
+
+function editCart() {
+    checkout(false);
 }

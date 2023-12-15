@@ -47,13 +47,13 @@ if ($result && mysqli_num_rows($result) > 0) {
         // Extract user details
         $names[] = mysqli_real_escape_string($con, $row['pro_name']);
         $quantities[] = intval($row['pro_quantity']);
-        $prices[] = floatval($row['pro_price']);
+        $prices[] = intval($row['pro_price']);
 
         // Calculate total price
         $totalPrice += $row['pro_quantity'] * $row['pro_price'];
     }
 
-    echo '<ul id="cart-items">';
+    echo '<table id="cart-items">';
 
 
     for ($i = 0; $i < count($names); $i++) {
@@ -62,25 +62,22 @@ if ($result && mysqli_num_rows($result) > 0) {
         $productQuantity = $quantities[$i];
 
        
-        echo '<li><table><tr>';
+        echo '<tr>';
         echo '<td>' . $productName . '</td>';
         echo '<td>*</td> ';
-        
         echo '<td>' . $productQuantity . ' </td>';
         echo '<td> = </td> ';
-        
         echo '<td> ' . $productPrice * $productQuantity . '</td>';
-        echo '</tr></table></li>';
+        echo '</tr>';
     }
-
-    echo '</ul>';
+    echo '</table> ';
 
   
-    echo '<p>Total: <span id="total">' . number_format($totalPrice, 2) . '</span></p>';
+    echo '<p>Total: <span id="total">'.$totalPrice. '</span></p>';
 } else {
 
     echo "<h3>Cart is Empty</h3>";
-    echo '<p>Total: <span id="total">0.00</span></p>';
+    echo '<p>Total: <span id="total">0</span></p>';
 
 }
 

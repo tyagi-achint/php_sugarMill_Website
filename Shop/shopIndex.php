@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -105,14 +107,15 @@ if (mysqli_num_rows($result) > 0) {
     echo '
     <div id="cart">
     <h2>Shopping Cart</h2>
-    <ul id="cart-items">';
+    <table id="cart-items">
+   ';
 
     foreach ($cartItems as $item) {
         $productName = $item['pName'];
         $productQuantity = $item['quantity'];
         $productPrice = $item['productPrice'];
 
-        echo '<li><table><tr>';
+        echo '<tr>';
 echo '<td>' . $productName . '</td>';
 echo '<td>*</td> ';
 
@@ -120,38 +123,46 @@ echo '<td>' . $productQuantity . ' </td>';
 echo '<td> = </td> ';
 
 echo '<td> ' . $productPrice * $productQuantity . '</td>';
-echo '</tr></table></li>';
+echo '</tr>';
 
     }
 
-    echo '</ul>
-   <p>Total: <span id="total">' . number_format($totalPrice, 2) . '</span></p>
-   <button onclick="checkout()">Checkout</button>
+    echo '
+    
+   
+    </table>
+   <p>Total: <span id="total">' .$totalPrice. '</span></p>
+ 
+   <button onclick="checkout(true)">Checkout</button>
+   </div>
    ';
 } else {
     echo '<script>let cartItems = [];</script>
     <div id="cart">
         <h2>Shopping Cart</h2>
-        <ul id="cart-items"></ul>
-        <p>Total: <span id="total">0.00</span></p>
-        <button onclick="checkout()">Checkout</button>
+        <table id="cart-items"></table>
+        <p>Total: <span id="total">0</span></p>
+      
+        <button onclick="checkout(true)">Checkout</button>
     </div>';
 }
 
 mysqli_close($con);
 ?>
 
+
+            <button id="editCartbutton" style="display:none" onclick="editCart()">Edit Cart</button>
             <div class="back-button">
                 <a href="../index.php">Back</a>
             </div>
 
+
+
         </div>
 
 
-    </div>
-
-    <div id="CartalertDiv" style="display:none">
-        <?php
+        <div id="CartalertDiv" style="display:none">
+            <?php
             error_reporting(E_ERROR | E_PARSE);
             $alertClass = 'CartfailureAlert';
             $alertColor = '#ef2928';
@@ -160,8 +171,6 @@ mysqli_close($con);
             echo "
                 <head>
                     <link rel='stylesheet' href='../style.css'>
-
-                  
                 </head>
                     <div id='$alertClass' class='alertDiv' style='background-color: $alertColor;'>
                         <span id='{$alertClass}close' class='alertButton'><span class='material-symbols-outlined'>
@@ -180,11 +189,23 @@ mysqli_close($con);
                 </script>
             ";
             ?>
-        `;
+            `;
 
-    </div>
+        </div>
 
-    <script src="shopScript.js"></script>
+        <script src="shopScript.js"></script>
+
+        <script>
+        setInterval(function() {
+            const totalElementDiv = document.getElementById('total');
+            var editCartbutton = document.getElementById('editCartbutton');
+            if (totalElementDiv.innerHTML !== '0') {
+                editCartbutton.style.display = "block";
+            } else {
+                editCartbutton.style.display = "none";
+            }
+        }, 100);
+        </script>
 </body>
 
 </html>
